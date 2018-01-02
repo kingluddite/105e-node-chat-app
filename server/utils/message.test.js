@@ -8,12 +8,16 @@ describe('generateMessage', () => {
     const text = 'Some message';
     const message = generateMessage(from, text);
 
-    expect(typeof message.createdAt.toBe('number'));
+    expect(typeof message.createdAt).toEqual('number');
+    expect(message).toMatchObject({
+      from,
+      text,
+    });
     // call generateMessage(from, text)
     // get response back and store in variable
     // make assertions about response
     // assert from matches value you passed in
     // assert text matches up
-    // assert that createdAt is numberj
+    // assert that createdAt is number
   });
 });

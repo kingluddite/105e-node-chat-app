@@ -13,11 +13,5 @@ describe('generateMessage', () => {
       from,
       text,
     });
-    // call generateMessage(from, text)
-    // get response back and store in variable
-    // make assertions about response
-    // assert from matches value you passed in
-    // assert text matches up
-    // assert that createdAt is number
   });
 });

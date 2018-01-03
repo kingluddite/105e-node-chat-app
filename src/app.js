@@ -1,4 +1,8 @@
+import jQuery from 'jquery';
+// import validator from 'validator';
+
 const socket = io(); // opens a connection
+console.log('app is running');
 
 socket.on('connect', () => {
   console.log('Connected to server');
@@ -9,7 +13,7 @@ socket.on('disconnect', () => {
 });
 
 socket.on('newMessage', message => {
-  console.log('newMessage', message);
+  console.log('newMessagei', message);
   const li = jQuery('<li></li');
   li.text(`${message.from}: ${message.text}`);
 

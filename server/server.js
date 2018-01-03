@@ -31,6 +31,13 @@ io.on('connection', socket => {
     io.emit('newMessage', generateMessage(message.from, message.text));
     callback('This is from the server');
   });
+
+  socket.on('createLocationMessage', coords => {
+    io.emit(
+      'newMessage',
+      generateMessage('Admin', `${coords.latitude}, ${coords.longitude}`)
+    );
+  });
 });
 
 server.listen(port, () => {

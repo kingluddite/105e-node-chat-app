@@ -1,0 +1,80 @@
+.chat {
+  display: flex;
+  
+  &__sidebar {
+    background: linear-gradient(325deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* w3c */
+    height: 100vh;
+    overflow-y: scroll;
+    width: 26rem;
+
+    @media (max-width: 600px) {
+      display: none;
+    }
+  }
+  
+  &__sidebar__title {
+    color: #e6eaee;
+    margin: 1rem 2rem;
+    text-align: left;
+  }
+
+  &__sidebar ul {
+    list-style-type: none;
+  }
+
+  &_sidebar li {
+    background: #e6eaee;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+  }
+
+  &__messages {
+    flex-grow: 1;
+    list-style-type: none;
+    overflow-y: scroll;
+    padding: 1rem;
+  }
+
+  &__footer {
+    background: #e6eaee;
+    display: flex;
+    flex-shrink: 0;
+    padding: 1rem;
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+
+      button {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__footer form {
+    display: flex;
+    flex-grow: 1;
+    
+    @media (max-width: 600px) {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__footer form * {
+    margin-right: 1rem;
+  }
+
+  &__footer form input {
+    border: none;
+    flex-grow: 1;
+    padding: 1rem;
+  }
+}

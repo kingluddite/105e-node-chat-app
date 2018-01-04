@@ -1,5 +1,8 @@
+import io from 'socket.io-client';
 import jQuery from 'jquery';
 // import validator from 'validator';
+import 'normalize.css/normalize.css';
+import './styles/styles.scss';
 
 const socket = io(); // opens a connection
 console.log('app is running');
@@ -33,13 +36,16 @@ socket.on('newLocationMessage', message => {
 jQuery('#message-form').on('submit', e => {
   e.preventDefault();
 
+  const messageInput = jQuery('[name=message]');
   socket.emit(
     'createMessage',
     {
       from: 'User',
-      text: jQuery('[name=message]').val(),
+      text: messageInput.val(),
     },
-    () => {}
+    () => {
+      messageInput.val('');
+    }
   );
 });
 const locationButton = jQuery('#send-location');
@@ -48,14 +54,18 @@ locationButton.on('click', () => {
     return console('Geolocation not supported by your browser.');
   }
 
+  locationButton.attr('disabled', 'disabled').text('Sending location...');
+
   navigator.geolocation.getCurrentPosition(
     position => {
+      locationButton.removeAttr('disabled').text('Sending location');
       socket.emit('createLocationMessage', {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
       });
     },
     () => {
+      locationButton.revoveAttr('disabled').text('Send location');
       console.log('Unable to fetch location.');
     }
   );

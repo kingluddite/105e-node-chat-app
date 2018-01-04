@@ -1,6 +1,8 @@
 import io from 'socket.io-client';
 import jQuery from 'jquery';
+import moment from 'moment';
 // import validator from 'validator';
+
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 

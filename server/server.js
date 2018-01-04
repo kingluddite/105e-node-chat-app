@@ -41,5 +41,5 @@ io.on('connection', socket => {
 });
 
 server.listen(port, () => {
-  console.log(`App started on port ${port}. VROOOOOOM!`);
+  console.log(`Chat app started on port ${port}. VROOOOOOM!`);
 });

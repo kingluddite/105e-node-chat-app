@@ -7,6 +7,7 @@ import Mustache from 'mustache';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
+console.log(jQuery.param({ name: 'Joe', age: 22 }));
 const socket = io(); // opens a connection
 
 const scrollToBottom = () => {
@@ -30,7 +31,13 @@ const scrollToBottom = () => {
 };
 
 socket.on('connect', () => {
-  console.log('Connected to server');
+  const params = jQuery.deparam(window.location.search);
+
+  socket.emit('join', params, err => {
+    if (err) {
+    } else {
+    }
+  });
 });
 
 socket.on('disconnect', () => {

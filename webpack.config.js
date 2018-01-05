@@ -4,7 +4,7 @@ const path = require('path');
 // const ETP = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './src/app.js',
+  entry: './src/chat.js',
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',

@@ -38,29 +38,43 @@ socket.on('disconnect', () => {
 });
 
 socket.on('newMessage', message => {
-  const formattedTime = moment(message.createdAt).format('h:mm a');
-  const template = jQuery('#message-template').html();
-  const html = Mustache.render(template, {
-    text: message.text,
-    from: message.from,
-    createdAt: formattedTime,
-  });
+  if (
+    document.getElementById('message-template') &&
+    document.getElementById('messages')
+  ) {
+    const formattedTime = moment(message.createdAt).format('h:mm a');
+    const template = jQuery('#message-template');
+    console.log(typeof template);
+    const templateHtml = template.html();
+    const html = Mustache.render(templateHtml, {
+      text: message.text,
+      from: message.from,
+      createdAt: formattedTime,
+    });
 
-  jQuery('#messages').append(html);
-  scrollToBottom();
+    jQuery('#messages').append(html);
+    scrollToBottom();
+  }
 });
 
 socket.on('newLocationMessage', message => {
-  const formattedTime = moment(message.createdAt).format('h:mm a');
-  const template = jQuery('#location-message-template').html();
-  const html = Mustache.render(template, {
-    from: message.from,
-    url: message.url,
-    createdAt: formattedTime,
-  });
+  if (
+    document.getElementById('message-template') &&
+    document.getElementById('messages')
+  ) {
+    const formattedTime = moment(message.createdAt).format('h:mm a');
+    const template = jQuery('#location-message-template');
 
-  jQuery('#messages').append(html);
-  scrollToBottom();
+    const templateHtml = template.html();
+    const html = Mustache.render(templateHtml, {
+      from: message.from,
+      url: message.url,
+      createdAt: formattedTime,
+    });
+
+    jQuery('#messages').append(html);
+    scrollToBottom();
+  }
 });
 
 jQuery('#message-form').on('submit', e => {

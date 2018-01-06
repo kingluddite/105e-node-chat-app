@@ -1,13 +1,14 @@
 import io from 'socket.io-client';
 import jQuery from 'jquery';
+import deparam from 'jquery-deparam';
 import moment from 'moment';
 import Mustache from 'mustache';
-// import validator from 'validator';
 
+const { getPathFromUrl } = require('./../server/utils/validation');
+// import validator from 'validator';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
-
-console.log(jQuery.param({ name: 'Joe', age: 22 }));
+// console.log(jQuery.param({ name: 'Joe', age: 22 }));
 const socket = io(); // opens a connection
 
 const scrollToBottom = () => {
@@ -31,11 +32,14 @@ const scrollToBottom = () => {
 };
 
 socket.on('connect', () => {
-  const params = jQuery.deparam(window.location.search);
-
+  const noDollar = getPathFromUrl(window.location.search);
+  const params = jQuery.deparam(noDollar);
   socket.emit('join', params, err => {
     if (err) {
+      alert(err);
+      window.location.href = '/';
     } else {
+      console.log('No error');
     }
   });
 });
@@ -51,7 +55,6 @@ socket.on('newMessage', message => {
   ) {
     const formattedTime = moment(message.createdAt).format('h:mm a');
     const template = jQuery('#message-template');
-    console.log(typeof template);
     const templateHtml = template.html();
     const html = Mustache.render(templateHtml, {
       text: message.text,

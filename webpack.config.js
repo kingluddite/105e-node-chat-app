@@ -1,6 +1,6 @@
 const path = require('path');
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const webpack = require('webpack');
+const webpack = require('webpack');
 // const ETP = require('extract-text-webpack-plugin');
 
 module.exports = {
@@ -26,22 +26,26 @@ module.exports = {
   // devServer: {
   //   contentBase: path.join(__dirname, 'public'),
   // },
-  // plugins: [
-  //   new HtmlWebpackPlugin({
-  //     template: path.join(__dirname, 'src', 'index.html'),
-  //     inject: 'body',
-  //     filename: 'index.html',
-  //   }),
-  //
-  //   // new webpack.HotModuleReplacementPlugin(),
-  //
-  //   // new webpack.optimize.CommonsChunkPlugin({
-  //   //   name: 'common',
-  //   // }),
-  //   //
-  //   // new ETP({
-  //   //   filename: '[name].styles.css',
-  //   //   allChunks: true,
-  //   // }),
-  // ],
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+    }),
+    //   new HtmlWebpackPlugin({
+    //     template: path.join(__dirname, 'src', 'index.html'),
+    //     inject: 'body',
+    //     filename: 'index.html',
+    //   }),
+    //
+    //   // new webpack.HotModuleReplacementPlugin(),
+    //
+    //   // new webpack.optimize.CommonsChunkPlugin({
+    //   //   name: 'common',
+    //   // }),
+    //   //
+    //   // new ETP({
+    //   //   filename: '[name].styles.css',
+    //   //   allChunks: true,
+    //   // }),
+  ],
 };

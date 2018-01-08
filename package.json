@@ -6,6 +6,7 @@
     "> 1%",
     "ie > 9"
   ],
+  "presets": ["env"],
   "license": "MIT",
   "scripts": {
     "start": "node server/server.js",

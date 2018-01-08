@@ -9,6 +9,7 @@ const { getPathFromUrl } = require('./../server/utils/validation');
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 // console.log(jQuery.param({ name: 'Joe', age: 22 }));
+
 const socket = io(); // opens a connection
 
 const scrollToBottom = () => {
@@ -46,6 +47,10 @@ socket.on('connect', () => {
 
 socket.on('disconnect', () => {
   console.log('Disconnected from server');
+});
+
+socket.on('updateUserList', function(users) {
+  console.log('Users list', user);
 });
 
 socket.on('newMessage', message => {

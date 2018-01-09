@@ -11,7 +11,7 @@
   "scripts": {
     "start": "node server/server.js",
     "build": "webpack --watch",
-    "build-babel": "babel src/app.js --out-file=public/scripts/app.js --watch",
+    "build-babel": "babel src/chat.js --out-file=public/bundle.js --watch",
     "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha server/**/*.test.js",
     "test-watch": "nodemon --exec 'npm test'",
     "dev-server": "yarn run dev-server"

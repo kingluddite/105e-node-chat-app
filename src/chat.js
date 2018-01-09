@@ -4,7 +4,7 @@ import deparam from 'jquery-deparam';
 import moment from 'moment';
 import Mustache from 'mustache';
 
-const { getPathFromUrl } = require('./../server/utils/validation');
+import { getPathFromUrl } from './../server/utils/validation';
 // import validator from 'validator';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
@@ -49,8 +49,14 @@ socket.on('disconnect', () => {
   console.log('Disconnected from server');
 });
 
-socket.on('updateUserList', function(users) {
-  console.log('Users list', user);
+socket.on('updateUserList', users => {
+  const ol = jQuery('<ol></ol>');
+
+  users.forEach(user => {
+    ol.append(jQuery('<li></li>').text(user));
+  });
+
+  jQuery('#users').html(ol);
 });
 
 socket.on('newMessage', message => {

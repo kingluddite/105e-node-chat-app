@@ -105,7 +105,6 @@ jQuery('#message-form').on('submit', e => {
   socket.emit(
     'createMessage',
     {
-      from: 'User',
       text: messageInput.val(),
     },
     () => {
@@ -130,7 +129,7 @@ locationButton.on('click', () => {
       });
     },
     () => {
-      locationButton.revoveAttr('disabled').text('Send location');
+      locationButton.removeAttr('disabled').text('Send location');
       console.log('Unable to fetch location.');
     }
   );

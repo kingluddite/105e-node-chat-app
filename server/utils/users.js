@@ -27,7 +27,7 @@ class Users {
   getUserList(room) {
     // we will just return an array of strings
     // ['Manny', 'Mo', 'Jack']
-    const users = this.users.filter(user => user.room == room);
+    const users = this.users.filter(user => user.room === room);
     const namesArray = users.map(user => user.name);
 
     return namesArray;

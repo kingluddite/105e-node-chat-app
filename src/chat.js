@@ -50,10 +50,10 @@ socket.on('disconnect', () => {
 });
 
 socket.on('updateUserList', users => {
-  const ol = jQuery('<ol></ol>');
+  const ol = jQuery('<ol class="chat__sidebar__list"></ol>');
 
   users.forEach(user => {
-    ol.append(jQuery('<li></li>').text(user));
+    ol.append(jQuery('<li class="chat__sidebar__item"></li>').text(user));
   });
 
   jQuery('#users').html(ol);

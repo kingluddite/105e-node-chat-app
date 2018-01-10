@@ -18,11 +18,11 @@
     text-align: left;
   }
 
-  &__sidebar ul {
+  &__sidebar__list {
     list-style-type: none;
   }
 
-  &_sidebar li {
+  &__sidebar__item {
     background: #e6eaee;
     border: 1px solid #e1e1e1;
     border-radius: 5px;
